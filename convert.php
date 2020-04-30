@@ -7,17 +7,21 @@ define("DOWNLOAD_FOLDER", dirname(__FILE__)."/download/"); //Be sure the chmod t
 define("DOWNLOAD_FOLDER_PUBLIC", "http://michaelbelgium.me/ytconverter/download/");
 define("DOWNLOAD_MAX_LENGTH", 0); //max video duration (in seconds) to be able to download, set to 0 to disable
 define("KEY_FILE", "./apikeys.json"); //the name of the file to store the keys in
+define("USE_KEYS", false); //use api keys to access api
 
 header("Content-Type: application/json");
 
 if(isset($_GET["youtubelink"]) && !empty($_GET["youtubelink"]))
 {
 	$youtubelink = $_GET["youtubelink"];
-	$apikey = $_GET["key"];
-	$json = json_decode(file_get_contents(KEY_FILE), true);
 
-	if(array_search($apikey, $json) === false)
-		die(json_encode(array("error" => true, "message" => "API key does not exist")));
+	if(USE_KEYS) {
+		$apikey = $_GET["key"];
+		$json = json_decode(file_get_contents(KEY_FILE), true);
+	
+		if(array_search($apikey, $json) === false)
+			die(json_encode(array("error" => true, "message" => "API key does not exist")));
+	}
 
 	$success = preg_match('#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#', $youtubelink, $matches);
 

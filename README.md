@@ -9,6 +9,7 @@ With these two php files you are able to create your own Youtube to MP3 API with
 | Parameter		| Required	| Type | Description |
 |-----------|----------|-------------|-------------|
 | youtubelink	| Yes	| string |  The full youtubelink of the video you want to download. |
+| key | Yes (if defined in `convert.php`) | string | An api-key from apikeys.json |
 | delete | No | string | The youtubeid of which you want it to be deleted from storage on the server |
 
 ### __Possible youtubelinks__
