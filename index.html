@@ -18,8 +18,10 @@
                 <form action="convert.php" method="post" id="frm-convert">
                     <div class="form-group">
                         <input type="text" name="youtubelink" class="form-control" id="link" placeholder="Youtube url" required />
+                        <input type="text" name="key" class="form-control" id="api-key" placeholder="api key" required />
                     </div>
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-refresh" aria-hidden="true"></i> Convert</button>
+                    <a href="#" class="btn btn-outline-secondary">Get API-key</a>
                 </form>
             </div>
         </div>
@@ -76,7 +78,7 @@
                 $("#frm-convert button[type=submit]").html("<i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> Converting... Please wait");
 
                 e.preventDefault();
-                $.get($(this).attr("action"), { youtubelink: $("#link").val() },  function(data) {
+                $.get($(this).attr("action"), { youtubelink: $("#link").val(), key: $("#api-key").val() },  function(data) {
                     $("pre").text(JSON.stringify(data, null, 4));
                     $("#frm-convert button[type=submit]").html("<i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> Convert");
 
