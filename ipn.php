@@ -10,6 +10,8 @@ $file = fopen(LOG_FILE, 'a');
 fwrite($file, '['.date('Y/m/d H:i:s').']' . json_encode($array) . PHP_EOL);
 fclose($file);
 
+$keyfile = fopen(KEY_FILE, 'w+');
+
 $json = json_decode(file_get_contents(KEY_FILE), true);
 
 if(isset($array['txn_type'])) {
@@ -28,6 +30,5 @@ if(isset($array['txn_type'])) {
     }
 }
 
-$keyfile = fopen(KEY_FILE, 'w');
 fwrite($keyfile, json_encode($json, JSON_FORCE_OBJECT));
 fclose($keyfile);
