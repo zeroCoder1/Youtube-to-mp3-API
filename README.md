@@ -85,6 +85,15 @@ define("MAX_RESULTS", 10);
 define("API_KEY", "");
 ```
 
+## Paypal (Optional)
+
+You are able to integrate paypal to have customers pay for api keys with a subscription
+* Create a subscription button on paypal
+* Copy the share link and paste it into the `href` of 'Get API-key' in `index.html`
+    * Set the url when customers get finished with the payment to the file `success.php`.
+* Set the url `ipn.php` as IPN (Instant Payment Notification) notification URL on Paypal
+
+
 # How I installed ffmpeg (compiling/building and installing)
 
 If you have ffmpeg in `yum` or `apt-get` this is **not needed**. I had to do this manually as I'm using Centos 6.x 

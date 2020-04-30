@@ -2,3 +2,4 @@
 vendor/
 download/*.mp3
 composer.lock
+ipn.log
