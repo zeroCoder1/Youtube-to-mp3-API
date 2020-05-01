@@ -33,5 +33,5 @@ if(isset($array['txn_type'])) {
     }
 }
 
-fwrite($keyfile, json_encode($json, JSON_FORCE_OBJECT));
+fwrite($keyfile, $json === null ? '{}' : json_encode($json, JSON_FORCE_OBJECT));
 fclose($keyfile);
