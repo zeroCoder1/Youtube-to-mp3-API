@@ -94,6 +94,13 @@ You are able to integrate paypal to have customers pay for api keys with a subsc
     * Set the url when customers get finished with the payment to the file `success.php`.
 * Set the url `ipn.php` as IPN (Instant Payment Notification) notification URL on Paypal
 
+The format of the json file is
+
+```JSON
+{
+  "email": "api-key"
+}
+```
 
 # How I installed ffmpeg (compiling/building and installing)
 
