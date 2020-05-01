@@ -4,14 +4,14 @@ include 'defines.php';
 
 define('LOG_FILE', './ipn.log');
 
-if(!USE_KEYS) exit;
-
 $raw = file_get_contents('php://input');
 parse_str($raw, $array);
 
 $file = fopen(LOG_FILE, 'a');
 fwrite($file, '['.date('Y/m/d H:i:s').']' . json_encode($array) . PHP_EOL);
 fclose($file);
+
+if(!USE_KEYS) exit;
 
 $keyfile = fopen(KEY_FILE, 'w');
 
@@ -26,7 +26,7 @@ if(isset($array['txn_type'])) {
             $key = bin2hex(random_bytes(32));
             $json[$payerEmail] = $key;
 
-            mail($payerEmail, 'Your API key for ' . GET_KEY_AT, 'Hi, We\'ve successfully received your payment for your subscription to the service. Your api key is "'.$key.'" - do not loose this key.');
+            mail($payerEmail, 'Your API key for ' . GET_KEY_AT, 'Hi, We\'ve successfully received your payment for your subscription to the service. Your api key is "'.$key.'" - do not loose this key. For problems and questions, mail to michael@michaelbelgium.me');
         }
     } elseif($txn_type == 'subscr_cancel') {
         unset($json[$payerEmail]);
