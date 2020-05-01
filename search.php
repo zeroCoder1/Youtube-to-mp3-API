@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 define("MAX_RESULTS", 10);
 define("API_KEY", "");
 
@@ -18,6 +20,14 @@ if (isset($_GET["q"]) && !empty($_GET["q"]))
 
     $client = new Google_Client();
     $client->setDeveloperKey(API_KEY);
+
+    // $guzzleClient = new Client([
+    //     'headers' => [
+    //         'referer' => $_SERVER['HTTP_HOST']
+    //     ]
+    // ]);
+
+    // $client->setHttpClient($guzzleClient);
 
     $youtube_service = new Google_Service_YouTube($client);
 
