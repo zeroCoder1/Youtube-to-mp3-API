@@ -12,7 +12,7 @@ header("Content-Type: application/json");
 if(isset($_GET["youtubelink"]) && !empty($_GET["youtubelink"]))
 {
 	$youtubelink = $_GET["youtubelink"];
-        $yt->setBinPath('/app/.heroku/youtube-dl');
+        $dl->setBinPath('/app/.heroku/youtube-dl');
 
 	$success = preg_match('#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#', $youtubelink, $matches);
 
